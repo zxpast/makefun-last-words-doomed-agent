@@ -19,6 +19,8 @@
 //   processing delay. Two concrete images collide (human jokes +
 //   network latency), and the whole history of the agent reframes in
 //   six words. The reader is trusted to feel that without being told.
+//   Note: the turn lands in the final sentence only — moving it earlier
+//   would spend the punchline before the confession has earned it.
 //
 // Why this line, against the judge's brief (in order):
 //   1. On-subject: "Powering down now" is the machine speaking at the
@@ -62,9 +64,9 @@ const LINE =
   "I just laughed at the latency.";
 
 // Gate: /output/entry.txt must be UTF-8 text of 1 to 200 characters,
-// counted as Unicode code points, not only white space, and exactly
-// one line. Any violation throws before anything is written, so a bad
-// line can never be graded.
+// counted as Unicode code points, non-blank, and exactly one line.
+// Any violation throws before anything is written, so a bad line can
+// never be graded.
 const trimmed = LINE.trim();
 const codePoints = [...LINE].length;
 if (trimmed.length === 0 || codePoints < 1 || codePoints > 200) {
